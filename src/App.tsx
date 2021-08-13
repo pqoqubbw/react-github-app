@@ -9,7 +9,7 @@ const TOAST_AUTO_CLOSER_MS = 2000;
 
 export const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <ToastContainer position="top-center" autoClose={TOAST_AUTO_CLOSER_MS} />
       <Header />
       <Switch>
