@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-function App() {
+import { ROUTE_PATH } from "~utils";
+import { MainPage, UserDetailedInfo, Header } from "~components";
+
+const TOAST_AUTO_CLOSER_MS = 2000;
+
+export const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ToastContainer position="top-center" autoClose={TOAST_AUTO_CLOSER_MS} />
+      <Header />
+      <Switch>
+        <Route exact path={ROUTE_PATH.MAIN_PAGE} component={MainPage} />
+        <Route exact path={ROUTE_PATH.USER_DETAILED_INFO} component={UserDetailedInfo} />
+      </Switch>
+    </Router>
   );
-}
-
-export default App;
+};
